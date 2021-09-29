@@ -140,7 +140,6 @@ def main(argv):
 
     validation_freq = 1
 
-    checkpoint_path = FLAGS.load_model_path
 
 
     train_file_path = "./WN18RR/text/train.txt"
