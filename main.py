@@ -219,10 +219,10 @@ def main(argv):
                 'model_state_dict': model.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
                 'loss': loss_epoch,
-                }, FLAGS.output_path)
+                }, os.path.join(FLAGS.output_path, 'model.pt'))
 
                 model.eval()
-                hits_at_1, hits_at_3, hits_at_10, mrr = evaluate(FLAGS.output_path, add_inverse_edge = False, device = device,
+                hits_at_1, hits_at_3, hits_at_10, mrr = evaluate(os.path.join(FLAGS.output_path, 'model.pt'), add_inverse_edge = False, device = device,
                                                             train_kg_file = train_file_path, val_kg_file = val_file_path, 
                                                             test_kg_file = None)
                 writer.add_scalar('Metrics/Hits_1/' + 'val', hits_at_1, global_step=epoch)
@@ -238,7 +238,7 @@ def main(argv):
                 'model_state_dict': model.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
                 'loss': loss_epoch,
-                }, FLAGS.output_path)
+                }, os.path.join(FLAGS.output_path, 'model.pt'))
             
         
 
