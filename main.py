@@ -66,7 +66,7 @@ def evaluate(model_path, add_inverse_edge , device, train_kg_file = None, val_kg
     optimizer = torch.optim.Adagrad(model.parameters(), lr=0.01)
 
 
-    checkpoint = torch.load(FLAGS.load_model_path)
+    checkpoint = torch.load(model_path)
     model.load_state_dict(checkpoint['model_state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
     epoch = checkpoint['epoch']
